@@ -1,0 +1,7 @@
+idl << EOF
+.compile /home/han/IDLWorkspace71/programs/linenum_read/linenum_multi_col.pro
+.run /home/han/IDLWorkspace71/programs/linenum_read/linenum_multi_col.pro
+
+.compile ck04_spec_mag_ab_vegabv_name_match_141222.pro
+.run ck04_spec_mag_ab_vegabv_name_match_141222.pro
+ck04_spec_mag_ab_vegabv_name_match_141222

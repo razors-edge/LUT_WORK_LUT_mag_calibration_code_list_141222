@@ -1,0 +1,54 @@
+LUT_optical_efficiency_curve_plot_141222.pro: plot the 7 experiment files
+
+gaussian_profile_2d_plot_141222.pro:  plot the 2d gaussian profile in a figure. The code that calculated the sigma of the 
+gaussian is missing. The sigma is 1.08, when that gaussian profile which allows 80% energy in 3x3 pixels and 12.38% 
+energy in the central pixel. 
+
+expo_time_mag_limit_lunar_141222.pro: Given the new LUT optical efficiency curve, calculate the full well magnitudes and 
+ magnitude upper limit at specific exposure time. As reference, the full well magnitudes and 
+magnitudes upper limit at specific exposure time with the old photometry parameters are calculated as while.
+
+plot_magab_sn.pro: plot the LUT AB mag limit and SN ratio relation
+
+We adopt the stellar atmosphere models of Casterlli & Kurucz 2004 for spectral calculation of LUT
+CK04_model_fit_reading_141222.pro: convert the fits files into text files
+
+CK04_model_type_tem_match_141222.pro: The CK models contain multiple spectral profile with different gravities for 
+each type of stars. This pro is to match the spectra with the gravities. 
+
+CK04_spec_part_141222.pro and CK04_spec_part_interpol_141222.pro: for the further processing, the spectra are extracted from 2000 to 
+7000 AA, and are linearly interpolated vectors with 1 AA grid.
+
+ck04_spec_multiply_new_effi_curve_141222.pro: ck04 spectra are multiplied by new efficiency curve
+
+ck04_spec_2_mag_new_effi_curve_141222.pro: calculate the AB magnitude of ck04 spectra and 
+the persentage of red leaks of new efficiency curve
+
+
+ck04_spec_2_vega_johnson_141222.pro: calculate the vega b and v band magnitudes of ck04 spectra
+
+ck04_spec_mag_ab_vega_name_match_141222.pro: combine two files together, then calculate the 
+color for each type of stars (B-R, AB-R, etc)
+
+plot_color_vs_col_index_new_effi_curve_141222.pro 输出mag(AB)-V 与(B-V) 关系图
+plot_color_vs_col_index_red_leak_new_effi_curve_141222.pro: ploting the mag(AB) vs. (B-V) color relation 
+diagram with red leaks
+plot_color_vs_limit_mag_30s_new_effi_curve_141222.pro ploting the v band limit magnitude (30s exposure) vs. (B-V) relation 
+diagram. 
+v_color_fit_new_effi_curve_141222.pro fit the mag(AB)-V vs.(B-V) color relation，then plot
+
+/Catalogues/Tycho2_catalog/tycho2_catalog.pro extract the ra, dec, Bt and Vt from Typho2 catalogue
+
+lut_mag_typho_catalog_cross_141222.pro extract all the stars in the LUT observation area
+typho2_cata_4_lut_equat2galac_141222.pro extract all the stars between each 10 degree galactic altitude 
+in the LUT observation area 
+typho2_cata_4_lut_candidate_selection_141222.pro 根据V 波段极限星等与(B-V) 关系曲线，对LUT可观测源进行筛选和统计，并出图。
+sky_field_calculation_LUT_141222.pro 计算不同银纬范围内LUT可观测天区面积。并计算星密度。
+typho2_cata_4_lut_candidate_plot.pro plot the candidates of Typho2 catalogue in the LUT observation area
+
+
+plot_LUT_equat2galac_141222.pro; plot_LUT_equat2galac_galac_141222.pro; plot_LUT_equat2galac_galac_polo_141222.pro; 
+plot_LUT_equat2galac_galac_polo_dec_141222.pro 分别在赤道或银道坐标下，绘制星密度的分布图。
+
+   
+plot_br_vs_abr.pro ploting the b-r color vs. ab-r color figure

@@ -1,0 +1,8 @@
+idl << EOF
+.compile /home/han/IDLWorkspace71/programs/linenum_read/linenum_multi_col.pro
+.run /home/han/IDLWorkspace71/programs/linenum_read/linenum_multi_col.pro
+.compile /home/han/IDLWorkspace71/programs/plot_figures/loadct_plot.pro
+.run /home/han/IDLWorkspace71/programs/plot_figures/loadct_plot.pro
+.compile br_color_fit_new_effi_curve_141222.pro
+.run br_color_fit_new_effi_curve_141222.pro
+br_color_fit_new_effi_curve_141222

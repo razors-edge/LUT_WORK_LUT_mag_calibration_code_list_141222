@@ -1,0 +1,9 @@
+idl << EOF
+.compile /home/han/IDLWorkspace71/programs/linenum_read/linenum_multi_col.pro
+.run /home/han/IDLWorkspace71/programs/linenum_read/linenum_multi_col.pro
+.compile /home/han/IDLWorkspace71/Astro_library/pro/math/tsum.pro
+.run  /home/han/IDLWorkspace71/Astro_library/pro/math/tsum.pro
+
+.compile ck04_spec_2_mag_new_effi_curve_141222.pro
+.run ck04_spec_2_mag_new_effi_curve_141222.pro
+ck04_spec_2_mag_new_effi_curve_141222

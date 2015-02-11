@@ -1,0 +1,6 @@
+idl << EOF
+.compile /home/han/IDLWorkspace71/programs/linenum_read/linenum_multi_col.pro
+.run /home/han/IDLWorkspace71/programs/linenum_read/linenum_multi_col.pro
+.compile plot_bv_vs_abv.pro
+.run plot_bv_vs_abv.pro
+plot_bv_vs_abv

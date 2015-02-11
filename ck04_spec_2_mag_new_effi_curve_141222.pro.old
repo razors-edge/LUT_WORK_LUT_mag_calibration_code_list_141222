@@ -1,0 +1,66 @@
+pro ck04_spec_2_mag_new_effi_curve_141222
+;ck04 spectra red leak by new efficiency curve
+close,/all
+path=('/home/han/WORK/LUT/LUT_mag_calibration/LUT_mag_calibration_141222/CK04_model/'+$
+'ckp00/spec_multiply_efficiency_curve/')
+list=findfile(path+'ckp00*_grav_part_interpol_out.txt')
+file_number=n_elements(list)
+print,file_number
+
+outputfile=('/home/han/WORK/LUT/LUT_mag_calibration/LUT_mag_calibration_141222/'+$
+'lut_optical_efficiency_curve/ck04_model_mag_ab.dat')
+
+openw,80,outputfile,width=360
+for i=0L, file_number-1 do begin
+inputfile=strcompress(list[i],/remove)
+string = STRSPLIT(inputfile, '/', /EXTRACT)
+;print,string[8]
+record={wave:0.0d,flux:0.0d}
+;maxrec=linenum_multi_col(inputfile,record)
+maxrec=7000L
+frequ = FINDGEN(7000) 
+flux1 = FINDGEN(7000) 
+;close,60
+data=replicate(record,maxrec)
+openr,50,inputfile
+readf,50,data
+close,50
+frequ = (2.997925e+18 / data.wave)
+;frequ = alog((2.997925e+18 / data.wave))
+flux1 = (data.flux * (data.wave^2 ) / 2.997925e+18)
+frequ_min = (2.997925e+18 / 9000)
+frequ_max = (2.997925e+18 / 2000)
+
+;flux_nu=0.0d
+;flux_lam=0.0d
+;flux_hz=0.0d
+;flux_tot_hz=0.0d
+;flux_tot_hz_effi=0.0d
+
+;Flux_tot_hz = tsum(frequ,flux1)
+;;print,frequ,Flux_tot_hz
+;;red leak is defined as wavelength of light longer than 3340 A (the blue edge of optical U band)
+;Flux_tot_hz_redleak = tsum(frequ,flux1,1339,5999)
+;redleak_persent = Flux_tot_hz_redleak / Flux_tot_hz
+;Flux_den_hz = Flux_tot_hz / (frequ_min - frequ_max)
+;;Flux_den_hz = Flux_tot_hz 
+;;Flux_den_hz = Flux_den_hz / alog(max(data.wave)/min(data.wave))
+Flux_tot_a = tsum(data.wave,data.flux)
+Flux_tot_a_redleak = tsum(data.wave,data.flux,1339,6999)
+redleak_persent = Flux_tot_a_redleak / Flux_tot_a
+Flux_den_a = Flux_tot_a / (max(data.wave) - min(data.wave))
+;Flux_den_a = Flux_tot_a 
+print,Flux_tot_a,Flux_den_a
+
+mag_AB = - 2.5 * alog10(Flux_den_a)
+;mag_AB = - 2.5 * alog10(Flux_tot_hz) - 48.60
+print,string[9],Flux_den_a,mag_AB,redleak_persent
+printf,80,string[9],Flux_den_a,mag_AB,redleak_persent
+
+endfor
+
+close,80
+print,'done'
+close,/all
+
+end
